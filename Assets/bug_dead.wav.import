@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bug_dead.wav-97d88c515bb1eed9f6b9a132b3f723cb.sample"
+
+[deps]
+
+source_file="res://Assets/bug_dead.wav"
+dest_files=[ "res://.import/bug_dead.wav-97d88c515bb1eed9f6b9a132b3f723cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
