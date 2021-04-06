@@ -1,0 +1,59 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Robot.gd" type="Script" id=1]
+[ext_resource path="res://robot/die/die_1.png" type="Texture" id=2]
+[ext_resource path="res://robot/die/die_2.png" type="Texture" id=3]
+[ext_resource path="res://robot/die/die_3.png" type="Texture" id=4]
+[ext_resource path="res://robot/die/die_4.png" type="Texture" id=5]
+[ext_resource path="res://robot/die/die_5.png" type="Texture" id=6]
+[ext_resource path="res://robot/die/die_6.png" type="Texture" id=7]
+[ext_resource path="res://robot/die/die_7.png" type="Texture" id=8]
+[ext_resource path="res://robot/die/die_8.png" type="Texture" id=9]
+[ext_resource path="res://robot/die/die_9.png" type="Texture" id=10]
+[ext_resource path="res://robot/go/go_1.png" type="Texture" id=11]
+[ext_resource path="res://robot/go/go_2.png" type="Texture" id=12]
+[ext_resource path="res://robot/go/go_3.png" type="Texture" id=13]
+[ext_resource path="res://robot/go/go_4.png" type="Texture" id=14]
+[ext_resource path="res://robot/go/go_5.png" type="Texture" id=15]
+[ext_resource path="res://Assets/death.wav" type="AudioStream" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "dead",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 74.3833, 73.7773 )
+
+[node name="Robot" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 12.9508, 0 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+animation = "dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 21.66, 13.5375 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -54.49, 45.8863 )
+enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

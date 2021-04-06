@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://vpad/attack.png" type="Texture" id=1]
+[ext_resource path="res://vpad/attack_press.png" type="Texture" id=2]
+[ext_resource path="res://vpad/arrow_r.png" type="Texture" id=3]
+[ext_resource path="res://vpad/arrow_r_press.png" type="Texture" id=4]
+[ext_resource path="res://vpad/arrow_l.png" type="Texture" id=5]
+[ext_resource path="res://vpad/arrow_l_press.png" type="Texture" id=6]
+[ext_resource path="res://vpad/jump.png" type="Texture" id=7]
+[ext_resource path="res://vpad/jump_press.png" type="Texture" id=8]
+[ext_resource path="res://vpad/option.png" type="Texture" id=9]
+[ext_resource path="res://vpad/option_press.png" type="Texture" id=10]
+[ext_resource path="res://vpad/help.png" type="Texture" id=11]
+[ext_resource path="res://vpad/help_press.png" type="Texture" id=12]
+
+[node name="vpad" type="CanvasLayer"]
+
+[node name="shoot" type="TouchScreenButton" parent="."]
+position = Vector2( 865.474, 381.304 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+action = "ui_focus_next"
+
+[node name="kanan" type="TouchScreenButton" parent="."]
+position = Vector2( 185.233, 479.287 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+action = "ui_right"
+
+[node name="kiri" type="TouchScreenButton" parent="."]
+position = Vector2( 9.56662, 479.765 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+action = "ui_left"
+
+[node name="lompat" type="TouchScreenButton" parent="."]
+position = Vector2( 736.388, 479.15 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+action = "ui_up"
+
+[node name="option" type="TouchScreenButton" parent="."]
+position = Vector2( 394.367, 487.813 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
+action = "ui_cancel"
+
+[node name="help" type="TouchScreenButton" parent="."]
+position = Vector2( 527.833, 485.523 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+action = "ui_select"

@@ -1,0 +1,990 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Exit_Stage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Area2D.gd" type="Script" id=4]
+[ext_resource path="res://Assets/duit.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SF Atarian System Bold Italic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/health1.png" type="Texture" id=7]
+[ext_resource path="res://vpad.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Robot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Serangga.tscn" type="PackedScene" id=10]
+[ext_resource path="res://screenshake.gd" type="Script" id=11]
+[ext_resource path="res://Snakes.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Ground/bg_forest.png" type="Texture" id=13]
+[ext_resource path="res://Repeat_Stage.gd" type="Script" id=14]
+[ext_resource path="res://Assets/sign_repeat.png" type="Texture" id=15]
+[ext_resource path="res://Assets/forest.wav" type="AudioStream" id=16]
+[ext_resource path="res://Pause.tscn" type="PackedScene" id=17]
+[ext_resource path="res://help.tscn" type="PackedScene" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 43.7473, 21.7652 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 42.1953, 79.142 )
+
+[node name="StageTwo" type="Node2D"]
+position = Vector2( 1.22775, 0 )
+
+[node name="Exit_Stage" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5284.44, 558.24 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 2.74181e-006, 0 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -65511, 38, 0, -65510, 38, 0, -65509, 38, 0, -65508, 38, 0, -65507, 38, 0, -65506, 38, 0, -65505, 38, 0, -65504, 38, 0, 0, 21, 0, 25, 49, 0, 27, 41, 0, 31, 41, 0, 33, 48, 0, 35, 50, 0, 42, 50, 0, 65536, 21, 0, 65538, 50, 0, 65541, 50, 0, 65544, 42, 0, 65547, 50, 0, 65551, 41, 0, 65556, 41, 0, 65558, 8, 0, 65561, 13, 0, 65562, 8, 0, 65563, 8, 0, 65564, 8, 0, 65565, 8, 0, 65566, 8, 0, 65567, 8, 0, 65568, 8, 0, 65569, 9, 0, 131072, 21, 0, 131080, 10, 0, 131087, 10, 0, 131092, 10, 0, 131108, 14, 0, 131109, 50, 0, 196608, 21, 0, 196611, 50, 0, 196623, 50, 0, 196625, 8, 0, 196631, 8, 0, 196637, 50, 0, 196647, 37, 0, 196648, 37, 0, 196649, 50, 0, 196651, 38, 0, 196652, 37, 0, 262144, 21, 0, 262145, 37, 0, 262146, 37, 0, 262147, 37, 0, 262148, 37, 0, 262157, 10, 0, 262164, 50, 0, 262169, 42, 0, 262183, 48, 0, 262186, 43, 0, 262187, 49, 0, 327680, 21, 0, 327689, 8, 0, 327691, 50, 0, 327698, 8, 0, 327705, 8, 0, 327708, 38, 0, 327711, 37, 0, 327712, 37, 0, 327713, 37, 0, 327719, 0, 0, 327720, 33, 0, 327721, 33, 0, 327722, 33, 0, 327723, 33, 0, 327724, 34, 0, 393216, 21, 0, 393217, 8, 0, 393218, 8, 0, 393219, 8, 0, 393220, 8, 0, 393223, 8, 0, 393226, 37, 0, 393227, 37, 0, 393231, 49, 0, 393233, 50, 0, 393241, 50, 0, 393244, 48, 0, 393247, 39, 0, 393248, 39, 0, 393249, 39, 0, 393250, 49, 0, 393259, 21, 0, 393260, 21, 0, 458752, 21, 0, 458758, 48, 0, 458761, 39, 0, 458764, 49, 0, 458767, 14, 0, 458775, 14, 0, 458780, 13, 0, 458781, 8, 0, 458782, 8, 0, 458783, 8, 0, 458784, 8, 0, 458785, 8, 0, 458786, 9, 0, 458795, 21, 0, 458796, 21, 0, 524288, 21, 0, 524294, 11, 0, 524295, 10, 0, 524296, 10, 0, 524297, 10, 0, 524298, 10, 0, 524299, 10, 0, 524300, 15, 0, 524302, 50, 0, 524305, 48, 0, 524308, 14, 0, 524314, 42, 0, 524331, 21, 0, 524332, 21, 0, 589824, 21, 0, 589828, 8, 0, 589833, 50, 0, 589839, 49, 0, 589841, 8, 0, 589846, 50, 0, 589850, 14, 0, 589856, 50, 0, 589860, 10, 0, 589867, 21, 0, 589868, 21, 0, 655360, 21, 0, 655362, 8, 0, 655375, 8, 0, 655403, 21, 0, 655404, 21, 0, 720896, 21, 0, 720897, 37, 0, 720898, 37, 0, 720900, 38, 0, 720901, 38, 0, 720902, 38, 0, 720903, 38, 0, 720909, 38, 0, 720913, 37, 0, 720914, 37, 0, 720915, 37, 0, 720917, 38, 0, 720921, 38, 0, 720925, 37, 0, 720926, 37, 0, 720927, 37, 0, 720928, 37, 0, 720932, 38, 0, 720934, 10, 0, 720939, 21, 0, 720940, 21, 0, 786432, 21, 0, 786433, 42, 0, 786434, 42, 0, 786437, 40, 0, 786438, 40, 0, 786439, 40, 0, 786440, 48, 0, 786445, 41, 0, 786448, 48, 0, 786449, 39, 0, 786450, 39, 0, 786451, 39, 0, 786452, 42, 0, 786454, 41, 0, 786458, 41, 0, 786460, 48, 0, 786463, 39, 0, 786464, 39, 0, 786466, 41, 0, 786468, 49, 0, 786475, 21, 0, 786476, 21, 0, 851968, 21, 0, 851969, 33, 0, 851970, 33, 0, 851971, 33, 0, 851972, 33, 0, 851973, 33, 0, 851974, 33, 0, 851975, 33, 0, 851976, 33, 0, 851977, 33, 0, 851981, 33, 0, 851982, 33, 0, 851983, 33, 0, 851984, 33, 0, 851985, 33, 0, 851986, 33, 0, 851987, 33, 0, 851988, 33, 0, 851989, 33, 0, 851990, 33, 0, 851993, 33, 0, 851994, 33, 0, 851995, 33, 0, 851996, 33, 0, 851997, 33, 0, 851998, 33, 0, 851999, 33, 0, 852000, 33, 0, 852001, 33, 0, 852002, 33, 0, 852003, 33, 0, 852004, 33, 0, 852005, 35, 0, 852009, 38, 0, 852010, 37, 0, 852011, 21, 0, 852012, 21, 0, 917504, 21, 0, 917505, 21, 0, 917506, 21, 0, 917507, 21, 0, 917508, 21, 0, 917509, 21, 0, 917510, 21, 0, 917511, 21, 0, 917512, 21, 0, 917513, 21, 0, 917514, 48, 0, 917517, 21, 0, 917518, 21, 0, 917519, 21, 0, 917520, 21, 0, 917521, 21, 0, 917522, 21, 0, 917523, 21, 0, 917524, 21, 0, 917525, 21, 0, 917526, 21, 0, 917527, 49, 0, 917529, 21, 0, 917530, 21, 0, 917531, 21, 0, 917532, 21, 0, 917533, 21, 0, 917534, 21, 0, 917535, 21, 0, 917536, 21, 0, 917537, 21, 0, 917538, 21, 0, 917539, 21, 0, 917540, 21, 0, 917541, 49, 0, 917543, 42, 0, 917544, 43, 0, 917547, 21, 0, 917548, 21, 0, 983040, 21, 0, 983041, 21, 0, 983042, 21, 0, 983043, 21, 0, 983044, 21, 0, 983045, 21, 0, 983046, 21, 0, 983047, 21, 0, 983048, 21, 0, 983049, 21, 0, 983050, 21, 0, 983051, 21, 0, 983052, 21, 0, 983053, 21, 0, 983054, 21, 0, 983055, 21, 0, 983056, 21, 0, 983057, 21, 0, 983058, 21, 0, 983059, 21, 0, 983060, 21, 0, 983061, 21, 0, 983062, 21, 0, 983063, 21, 0, 983064, 21, 0, 983065, 21, 0, 983066, 21, 0, 983067, 21, 0, 983068, 21, 0, 983069, 21, 0, 983070, 21, 0, 983071, 21, 0, 983072, 21, 0, 983073, 21, 0, 983074, 21, 0, 983075, 21, 0, 983076, 21, 0, 983077, 8, 0, 983078, 8, 0, 983079, 8, 0, 983080, 8, 0, 983081, 8, 0, 983082, 8, 0, 983083, 21, 0, 983084, 21, 0, 1048576, 45, 0, 1048577, 45, 0, 1048578, 45, 0, 1048579, 45, 0, 1048580, 45, 0, 1048581, 45, 0, 1048582, 45, 0, 1048583, 45, 0, 1048584, 45, 0, 1048585, 45, 0, 1048586, 45, 0, 1048587, 45, 0, 1048588, 45, 0, 1048589, 45, 0, 1048590, 45, 0, 1048591, 45, 0, 1048592, 45, 0, 1048593, 45, 0, 1048594, 45, 0, 1048595, 45, 0, 1048596, 45, 0, 1048597, 45, 0, 1048598, 45, 0, 1048599, 45, 0, 1048600, 45, 0, 1048601, 45, 0, 1048602, 45, 0, 1048603, 45, 0, 1048604, 45, 0, 1048605, 45, 0, 1048606, 45, 0, 1048607, 45, 0, 1048608, 45, 0, 1048609, 45, 0, 1048610, 45, 0, 1048611, 45, 0, 1048612, 45, 0, 1048613, 45, 0, 1048614, 45, 0, 1048615, 45, 0, 1048616, 45, 0, 1048617, 45, 0, 1048618, 45, 0, 1048619, 45, 0, 1048620, 45, 0, 1114112, 45, 0, 1114113, 45, 0, 1114114, 45, 0, 1114115, 45, 0, 1114116, 45, 0, 1114117, 45, 0, 1114118, 45, 0, 1114119, 45, 0, 1114120, 45, 0, 1114121, 45, 0, 1114122, 45, 0, 1114123, 45, 0, 1114124, 45, 0, 1114125, 45, 0, 1114126, 45, 0, 1114127, 45, 0, 1114128, 45, 0, 1114129, 45, 0, 1114130, 45, 0, 1114131, 45, 0, 1114132, 45, 0, 1114133, 45, 0, 1114134, 45, 0, 1114135, 45, 0, 1114136, 45, 0, 1114137, 45, 0, 1114138, 45, 0, 1114139, 45, 0, 1114140, 45, 0, 1114141, 45, 0, 1114142, 45, 0, 1114143, 45, 0, 1114144, 45, 0, 1114145, 45, 0, 1114146, 45, 0, 1114147, 45, 0, 1114148, 45, 0, 1114149, 45, 0, 1114150, 45, 0, 1114151, 45, 0, 1114152, 45, 0, 1114153, 45, 0, 1114154, 45, 0, 1114155, 45, 0, 1114156, 45, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 179.923, 540.411 )
+
+[node name="Koleksi" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="Duit_0" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 456.718, 574.581 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_0"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_0"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_0"]
+wait_time = 0.1
+
+[node name="Duit_1" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 598.483, 583.173 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_1"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_1"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_1"]
+wait_time = 0.1
+
+[node name="Duit_2" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 1487.17, 852.548 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_2"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_2"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_2"]
+wait_time = 0.1
+
+[node name="Duit_3" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 1728.85, 598.278 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_3"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_3"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_3"]
+wait_time = 0.1
+
+[node name="Duit_4" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 2934.75, 462.332 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_4"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_4"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_4"]
+wait_time = 0.1
+
+[node name="Duit_5" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 3123.56, 462.332 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_5"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_5"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_5"]
+wait_time = 0.1
+
+[node name="Duit_6" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 3904, 472.402 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_6"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_6"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_6"]
+wait_time = 0.1
+
+[node name="Duit_7" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 3400.49, 844.996 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_7"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_7"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_7"]
+wait_time = 0.1
+
+[node name="Duit_8" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 3043, 850.031 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_8"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_8"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_8"]
+wait_time = 0.1
+
+[node name="Duit_9" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4090.29, 844.996 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_9"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_9"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_9"]
+wait_time = 0.1
+
+[node name="Duit_10" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4928.63, 726.672 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_10"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_10"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_10"]
+wait_time = 0.1
+
+[node name="Duit_11" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 5182.9, 980.943 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_11"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_11"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_11"]
+wait_time = 0.1
+
+[node name="Duit_12" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4920.69, 1117.63 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_12"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_12"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_12"]
+wait_time = 0.1
+
+[node name="Duit_13" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4477.16, 1616.95 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_13"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_13"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_13"]
+wait_time = 0.1
+
+[node name="Duit_14" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4343.26, 1619.74 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_14"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_14"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_14"]
+wait_time = 0.1
+
+[node name="Duit_15" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4426.95, 2378.49 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_15"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_15"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_15"]
+wait_time = 0.1
+
+[node name="Duit_16" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4541.32, 2375.7 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_16"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_16"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_16"]
+wait_time = 0.1
+
+[node name="Duit_17" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4661.27, 2378.49 )
+rotation = 0.289974
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_17"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_17"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_17"]
+wait_time = 0.1
+
+[node name="Duit_18" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 4809.11, 2386.85 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_18"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_18"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_18"]
+wait_time = 0.1
+
+[node name="Duit_19" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 3698.89, 2378.49 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_19"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_19"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_19"]
+wait_time = 0.1
+
+[node name="Duit_20" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 787.576, 2516.89 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_20"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_20"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_20"]
+wait_time = 0.1
+
+[node name="Duit_21" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 685.72, 2516.25 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_21"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_21"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_21"]
+wait_time = 0.1
+
+[node name="Duit_22" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 573.349, 2513.6 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_22"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_22"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_22"]
+wait_time = 0.1
+
+[node name="Duit_23" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 960.253, 2264.49 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_23"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_23"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_23"]
+wait_time = 0.1
+
+[node name="Duit_24" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 586.599, 2134.64 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_24"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_24"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_24"]
+wait_time = 0.1
+
+[node name="Duit_25" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 953.05, 1874.36 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_25"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_25"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_25"]
+wait_time = 0.1
+
+[node name="Duit_26" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 590.024, 1617.5 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_26"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_26"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_26"]
+wait_time = 0.1
+
+[node name="Duit_27" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 230.422, 1483.93 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_27"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_27"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_27"]
+wait_time = 0.1
+
+[node name="Duit_28" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 1367.45, 1507.91 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_28"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_28"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_28"]
+wait_time = 0.1
+
+[node name="Duit_29" type="Area2D" parent="Koleksi"]
+editor/display_folded = true
+position = Vector2( 1723.63, 1381.19 )
+rotation = 3.4254
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Koleksi/Duit_29"]
+position = Vector2( 3.56523, 0.858555 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koleksi/Duit_29"]
+position = Vector2( 3.64886, 0.643917 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Koleksi/Duit_29"]
+wait_time = 0.1
+
+[node name="Score" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="Score"]
+
+[node name="Base" type="Control" parent="Score/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Score/UI/Base"]
+visible = false
+margin_left = 16.0
+margin_right = 65.0
+margin_bottom = 31.0
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+text = "SCORE :
+"
+
+[node name="ScoreLabel" type="Label" parent="Score/UI/Base"]
+visible = false
+margin_left = 200.547
+margin_top = 1.47996
+margin_right = 226.547
+margin_bottom = 66.48
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.0627451, 0.0627451, 1 )
+text = "0"
+
+[node name="Health_0" type="NinePatchRect" parent="Score/UI/Base"]
+margin_left = 939.72
+margin_top = -1.39806
+margin_right = 979.72
+margin_bottom = 38.6019
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Max_score" type="Label" parent="Score/UI/Base"]
+margin_left = 322.436
+margin_top = 3.79477
+margin_right = 925.436
+margin_bottom = 68.7948
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "     Find the Exit!"
+
+[node name="vpad" parent="." instance=ExtResource( 8 )]
+
+[node name="Enemy" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Robot" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 1018.3, 935.689 )
+
+[node name="Robot2" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 1070.07, 175.002 )
+
+[node name="Robot3" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 2222.97, 304.818 )
+
+[node name="Robot4" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 3400.59, 29.731 )
+
+[node name="Robot5" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 4058.94, 42.0945 )
+
+[node name="Robot6" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 3240.6, 561.219 )
+
+[node name="Robot7" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 4376.19, 809.967 )
+
+[node name="Robot8" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 5670.39, 557.615 )
+size = Vector2( 2, 2 )
+kecepatan = 200
+hp = 5
+
+[node name="Robot9" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 3085.58, 1837.4 )
+
+[node name="Robot10" parent="Enemy" instance=ExtResource( 9 )]
+position = Vector2( 1536.12, 1830.54 )
+
+[node name="Serangga" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 737.141, 1253.06 )
+
+[node name="Serangga2" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 555.877, 363.976 )
+
+[node name="Serangga3" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 1463.36, 461.788 )
+
+[node name="Serangga4" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 2718.61, 738.923 )
+
+[node name="Serangga5" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 3669.57, 1151.91 )
+
+[node name="Serangga6" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 5413.89, 1146.47 )
+
+[node name="Serangga7" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 4305.35, 358.542 )
+
+[node name="Serangga8" parent="Enemy" instance=ExtResource( 10 )]
+position = Vector2( 3473.94, 336.806 )
+
+[node name="Boss" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Robot11" parent="Boss" instance=ExtResource( 9 )]
+position = Vector2( 1946.07, 1580.02 )
+size = Vector2( 2, 2 )
+kecepatan = 300
+
+[node name="Robot12" parent="Boss" instance=ExtResource( 9 )]
+position = Vector2( 865.89, 1580.02 )
+size = Vector2( 2, 2 )
+kecepatan = 300
+
+[node name="Robot13" parent="Boss" instance=ExtResource( 9 )]
+position = Vector2( 3317.25, 1575.82 )
+size = Vector2( 2, 2 )
+kecepatan = 300
+
+[node name="screenshake" type="Node2D" parent="."]
+editor/display_folded = true
+script = ExtResource( 11 )
+
+[node name="Tween" type="Tween" parent="screenshake"]
+
+[node name="Obstacle2" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Snakes" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 3830.26, 838.715 )
+
+[node name="Snakes2" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 3866.45, 1605.69 )
+
+[node name="Snakes3" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 5172.38, 1862.54 )
+
+[node name="Snakes4" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 5293.97, 1861.59 )
+
+[node name="Snakes5" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 5405.13, 1862.54 )
+
+[node name="Snakes6" parent="Obstacle2" instance=ExtResource( 12 )]
+position = Vector2( 2418.75, 1605.15 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3050, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 2.39501, 2.83158 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="Stage" type="Node2D" parent="."]
+
+[node name="Repeat_Stage" type="Area2D" parent="Stage"]
+position = Vector2( 3806.74, 48.4016 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Stage/Repeat_Stage"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Repeat_Stage"]
+shape = SubResource( 6 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+max_distance = 5500.0
+attenuation = 0.366021
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+
+[node name="Pause" parent="PauseScreen" instance=ExtResource( 17 )]
+pause_mode = 2
+visible = false
+
+[node name="controls" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="help" parent="controls" instance=ExtResource( 18 )]
+pause_mode = 2
+visible = false
+[connection signal="body_entered" from="Exit_Stage" to="Player" method="_on_Exit_Stage_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_0" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_0" to="Koleksi/Duit_0" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_0/Timer" to="Koleksi/Duit_0" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_1" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_1" to="Koleksi/Duit_1" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_1/Timer" to="Koleksi/Duit_1" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_2" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_2" to="Koleksi/Duit_2" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_2/Timer" to="Koleksi/Duit_2" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_3" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_3" to="Koleksi/Duit_3" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_3/Timer" to="Koleksi/Duit_3" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_4" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_4" to="Koleksi/Duit_4" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_4/Timer" to="Koleksi/Duit_4" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_5" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_5" to="Koleksi/Duit_5" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_5/Timer" to="Koleksi/Duit_5" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_6" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_6" to="Koleksi/Duit_6" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_6/Timer" to="Koleksi/Duit_6" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_7" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_7" to="Koleksi/Duit_7" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_7/Timer" to="Koleksi/Duit_7" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_8" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_8" to="Koleksi/Duit_8" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_8/Timer" to="Koleksi/Duit_8" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_9" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_9" to="Koleksi/Duit_9" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_9/Timer" to="Koleksi/Duit_9" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_10" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_10" to="Koleksi/Duit_10" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_10/Timer" to="Koleksi/Duit_10" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_11" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_11" to="Koleksi/Duit_11" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_11/Timer" to="Koleksi/Duit_11" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_12" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_12" to="Koleksi/Duit_12" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_12/Timer" to="Koleksi/Duit_12" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_13" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_13" to="Koleksi/Duit_13" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_13/Timer" to="Koleksi/Duit_13" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_14" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_14" to="Koleksi/Duit_14" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_14/Timer" to="Koleksi/Duit_14" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_15" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_15" to="Koleksi/Duit_15" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_15/Timer" to="Koleksi/Duit_15" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_16" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_16" to="Koleksi/Duit_16" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_16/Timer" to="Koleksi/Duit_16" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_17" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_17" to="Koleksi/Duit_17" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_17/Timer" to="Koleksi/Duit_17" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_18" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_18" to="Koleksi/Duit_18" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_18/Timer" to="Koleksi/Duit_18" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_19" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_19" to="Koleksi/Duit_19" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_19/Timer" to="Koleksi/Duit_19" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_20" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_20" to="Koleksi/Duit_20" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_20/Timer" to="Koleksi/Duit_20" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_21" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_21" to="Koleksi/Duit_21" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_21/Timer" to="Koleksi/Duit_21" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_22" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_22" to="Koleksi/Duit_22" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_22/Timer" to="Koleksi/Duit_22" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_23" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_23" to="Koleksi/Duit_23" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_23/Timer" to="Koleksi/Duit_23" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_24" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_24" to="Koleksi/Duit_24" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_24/Timer" to="Koleksi/Duit_24" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_25" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_25" to="Koleksi/Duit_25" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_25/Timer" to="Koleksi/Duit_25" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_26" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_26" to="Koleksi/Duit_26" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_26/Timer" to="Koleksi/Duit_26" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_27" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_27" to="Koleksi/Duit_27" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_27/Timer" to="Koleksi/Duit_27" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_28" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_28" to="Koleksi/Duit_28" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_28/Timer" to="Koleksi/Duit_28" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Koleksi/Duit_29" to="Player" method="_on_Duit_0_body_entered"]
+[connection signal="body_entered" from="Koleksi/Duit_29" to="Koleksi/Duit_29" method="_on_Duit_0_body_entered"]
+[connection signal="timeout" from="Koleksi/Duit_29/Timer" to="Koleksi/Duit_29" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Obstacle2/Snakes" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Obstacle2/Snakes2" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Obstacle2/Snakes3" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Obstacle2/Snakes4" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Obstacle2/Snakes5" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Obstacle2/Snakes6" to="Player" method="_on_Snakes_body_entered"]
+[connection signal="body_entered" from="Stage/Repeat_Stage" to="Player" method="_on_Repeat_Stage_body_entered"]
